@@ -74,6 +74,12 @@ describe TowersOfHanoi do
             expect(towersofhanoi.won?).to be(true)
         end
     end
+
+    describe "array_picker" do
+        it "should return the given array" do
+            expect(towersofhanoi.array_picker(1)).to be(@array1)
+        end
+    end
 end
 
 
