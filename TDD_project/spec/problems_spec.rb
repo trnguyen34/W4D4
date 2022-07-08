@@ -31,3 +31,56 @@ describe "#stock_picker" do
         expect(stock_picker(stock_price)).to eq([1,4])
     end
 end
+
+describe TowersOfHanoi do
+    subject (:towersofhanoi) { TowersOfHanoi.new}
+    # let(array1) { towersofhanoi.array1}
+    # let(array2) { towersofhanoi.array2}
+    before(:each) do 
+        @array1 = towersofhanoi.array1
+        @array2 = towersofhanoi.array2
+        @array3 = towersofhanoi.array3
+    end
+
+    describe "#initialize" do
+        it "array1 should be [3, 2, 1]" do
+            expect(towersofhanoi.array1).to eq([3, 2, 1])
+            expect(towersofhanoi.array2).to eq([])
+            expect(towersofhanoi.array3).to eq([])
+        end
+    end
+
+    describe "#move" do
+        it "should move a disk from an array to another array" do
+            expect(towersofhanoi.move(@array1, @array2)).to eq([1])
+        end
+
+        it "shound raise an error" do 
+            expect(towersofhanoi.move(@array1, @array2))
+            expect{towersofhanoi.move(@array1, @array2)}.to raise_error("not valid")
+        end
+    end
+
+    describe "#valid_move?" do 
+        it "should raise an error if the move is not valid" do
+            expect{towersofhanoi.move(@array2, @array1)}.to raise_error("stack is empty, pick another stack")
+        end
+    end
+
+    describe "#won?" do 
+        it "should return false" do
+            expect(towersofhanoi.won?).to be(false)
+            towersofhanoi.array3 = [3,2,1]
+            expect(towersofhanoi.won?).to be(true)
+        end
+    end
+end
+
+
+
+
+
+
+
+
+

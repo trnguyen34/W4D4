@@ -57,19 +57,17 @@ end
 
 class TowersOfHanoi
 
-    attr_reader :array1, :array2, :array3
+    attr_accessor :array1, :array2, :array3
     # each array can be its own number. 
     def initialize
         @array1 = [3,2,1]
         @array2 = []
         @array3 = []
-
     end
 
     def move(arr1, arr2) 
         raise "not valid" if !valid_move?(arr1, arr2)
         arr2 << arr1.pop
-
     end
 
     def valid_move?(arr1, arr2)
@@ -81,7 +79,6 @@ class TowersOfHanoi
 
     def won? 
         @array3 == [3,2,1]
-        puts " YOU WON!"
     end
 
     def play
@@ -97,7 +94,10 @@ class TowersOfHanoi
             rescue RuntimeError
                 puts "its not valid" 
             end
+
+            puts " YOU WON!" if won?
         end
+
     end
 
     def array_picker(num)
@@ -117,5 +117,5 @@ class TowersOfHanoi
     end
 end
 
-tower = TowersOfHanoi.new
-tower.play
+# tower = TowersOfHanoi.new
+# tower.play
